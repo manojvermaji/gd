@@ -1,44 +1,46 @@
-class ChannelsController < ApplicationController
-  before_action :set_channel, only: [:show, :edit, :update, :destroy]
+# class ChannelsController < ApplicationController
+#   before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
-  # GET /channels
-  # GET /channels.json
-  def index
-    @channels = Channel.all
-    @discussions = Discussion.all.order('created_at desc')
-  end
+#   # GET /channels
+#   # GET /channels.json
+#   def index
+#     @channels = Channel.all
+#     @discussions = Discussion.all.order('created_at desc')
+#   end
 
-  # GET /channels/1
-  # GET /channels/1.json
-  def show
-    @discussions = Discussion.where('channel_id = ?', @channel.id)
-    @channels = Channel.all
-  end
+#   # GET /channels/1
+#   # GET /channels/1.json
+#   def show
+#     @discussions = Discussion.where('channel_id = ?', @channel.id)
+#     @channels = Channel.all
+#   end
 
-  # GET /channels/new
-  def new
-    @channel = Channel.new
-  end
+#   # GET /channels/new
+#   def new
+#     @channel = Channel.new
+#   end
 
-  # GET /channels/1/edit
-  def edit
-  end
+#   # GET /channels/1/edit
+#   def edit
+#   end
 
-  # POST /channels
-  # POST /channels.json
-   def create
-    @channel = Channel.new(channel_params)
+#   # POST /channels
+#   # POST /channels.json
+#    def create
+#     @channel = Channel.new(channel_params)
 
-    respond_to do |format|
-      if @channel.save
-        format.html { redirect_to channels_path, notice: 'Channel was successfully created.' }
-        format.json { render :show, status: :created, location: @channel }
-      else
-        format.html { render :new }
-        format.json { render json: @channel.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+#     respond_to do |format|
+#       if @channel.save
+#         format.html { redirect_to channels_path, notice: 'Channel was successfully created.' }
+#         format.json { render :show, status: :created, location: @channel }
+#       else
+#         format.html { render :new }
+#         format.json { render json: @channel.errors, status: :unprocessable_entity }
+#       end
+#     end
+#   end
+
+
   class ChannelsController < ApplicationController
     before_action :set_channel, only: [:show, :edit, :update, :destroy]
   
@@ -150,4 +152,4 @@ class ChannelsController < ApplicationController
     def channel_params
       params.require(:channel).permit(:channel)
     end
-end
+# end
